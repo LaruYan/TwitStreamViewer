@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="4dp"
+    >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:id="@+id/linearLayoutActivityProfile">
+
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView_ActivityType" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Twitter Name did Activity"
+            android:id="@+id/textView_ActivityTwitterNameAndID"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorTweetColor"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:gravity="center_vertical"
+        android:id="@+id/linearLayoutSimpleProfile">
+
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView_ProfileMini" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Twitter Name"
+            android:id="@+id/textView_TwitterNameAndID"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textColor="@color/colorTweetColor" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tweet Contents maybe should be here"
+        android:id="@+id/textView_TwitterStatus"
+        android:textColor="@color/colorTweetColor"/>
+
+    <SurfaceView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/surfaceView_VideoTweet"
+        android:visibility="gone"/>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:id="@+id/linearLayoutMediaContent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayoutMediaPart1"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/imageView_Media1"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                 />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/imageView_Media2"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                 />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayoutMediaPart2"
+            android:visibility="gone"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/imageView_Media3"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                 />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/imageView_Media4"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                 />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

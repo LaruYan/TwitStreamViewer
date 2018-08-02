@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/imageView_ProfileMini"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_tweet_retweet" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/imageView_ProfileMini"
+        android:gravity="center_vertical"
+        android:id="@+id/linearLayout_Usernames">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="UserName @USID"
+            android:id="@+id/textView_TwitterNameAndID"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:id="@+id/imageView_ActivityType"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_tweet_retweet" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RetweeterName @RTID"
+            android:id="@+id/textView_ActivityTwitterNameAndID"
+            android:singleLine="true"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TweetContent"
+        android:id="@+id/textView_TwitterStatus"
+        android:layout_below="@+id/linearLayout_Usernames"
+        android:layout_toEndOf="@+id/imageView_ProfileMini" />
+
+</RelativeLayout>
