@@ -72,4 +72,12 @@
         </LinearLayout>
     </ScrollView>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:hint="텍스트를 여기에 입력" />
+
 </RelativeLayout>

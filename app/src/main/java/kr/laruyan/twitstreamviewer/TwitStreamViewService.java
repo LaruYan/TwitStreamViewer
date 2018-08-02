@@ -338,7 +338,7 @@ public class TwitStreamViewService extends Service {
         }
 
         final View inflatedView =// new View(this);
-                View.inflate(this, R.layout.item_tweet_no_picture, null);
+        View.inflate(this, R.layout.item_tweet_no_picture, null);
 
         final LinearLayout llActivityMini = (LinearLayout) inflatedView.findViewById(R.id.linearLayoutActivityProfile);
         final ImageView ivActivityType = (ImageView) inflatedView.findViewById(R.id.imageView_ActivityType);
@@ -644,187 +644,187 @@ public class TwitStreamViewService extends Service {
             }
         });
     }
-    /*
-        private void checkCacheAndSetVideoAPI21(final UnFocusedVideoView vv, final String url){
-            if(vv == null){
-                if(isDebug) {
-                    System.out.println("UnFocusedVideoView is Null");
-                }
-                return ;
+/*
+    private void checkCacheAndSetVideoAPI21(final UnFocusedVideoView vv, final String url){
+        if(vv == null){
+            if(isDebug) {
+                System.out.println("UnFocusedVideoView is Null");
             }
-
-            handlerDownloadImages.post(new Runnable() {
-                @Override
-                public void run() {
-                    //boolean cacheHit = false;
-                    //check cache if there is a file there.
-                    String filePath = getApplicationContext().getExternalCacheDir()+url.substring(url.lastIndexOf("/"));
-                    if( ! new File(filePath).canRead()){
-                        if(isDebug) {
-                            System.out.println("File " + filePath + " is not readable. downloading");
-                        }
-                        filePath = downloadFileFromUrl(url);
-                    }
-
-                    if(filePath == null){
-                        if(isDebug){
-                            System.out.println("file path is null, skipping ");
-                        }
-                        return ;
-                    }
-
-                    if(vv.isAttachedToWindow()){
-                        if(isDebug) {
-                            System.out.println("VideoView Attached to the Window");
-                        }
-                    }else{
-                        if(isDebug) {
-                            System.out.println("VideoView Not yet Attached");
-                        }
-                        handlerDownloadImages.postDelayed(this,DELAY_UI_ATTACH);
-                        return ;
-                    }
-
-                    final String finalFilePath = filePath;
-
-                    vv.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                        @Override
-                        public void onPrepared(MediaPlayer mp) {
-                            mp.setLooping(true);
-                            vv.start();
-                        }
-                    });
-                    vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            vv.resume();
-                        }
-                    });
-
-                    //if(audioManager == null) {
-                    //    audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-                    //}
-                    //audioManager.abandonAudioFocus();
-
-
-
-                    if(vv.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            //iv.setVisibility(View.GONE);
-                            if(isDebug) {
-                                System.out.println("setting VideoPath to VideoView: "+finalFilePath);
-                            }
-                            vv.setLayoutParams(new LinearLayout.LayoutParams(popupAreaWidth,popupAreaWidth/2));
-                            vv.setVideoPath(finalFilePath);
-                            vv.setVisibility(View.VISIBLE);
-                            vv.start();
-
-                            //tryout abandoning audiofocus..
-                            //AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-                            //System.out.println("abandonAudioFocus: "+audioManager.abandonAudioFocus(null));
-                        }})){
-
-                        if(isDebug) {
-                            System.out.println("post Succeded");
-                        }
-                    }else{
-                        if(isDebug) {
-                            System.out.println("post Failed");
-                        }
-                    }
-                }
-            });
+            return ;
         }
 
-        private void checkCacheAndSetVideo(final VideoView vv, final String url){
-            if(vv == null){
-                if(isDebug) {
-                    System.out.println("VideoView is Null");
+        handlerDownloadImages.post(new Runnable() {
+            @Override
+            public void run() {
+                //boolean cacheHit = false;
+                //check cache if there is a file there.
+                String filePath = getApplicationContext().getExternalCacheDir()+url.substring(url.lastIndexOf("/"));
+                if( ! new File(filePath).canRead()){
+                    if(isDebug) {
+                        System.out.println("File " + filePath + " is not readable. downloading");
+                    }
+                    filePath = downloadFileFromUrl(url);
                 }
-                return ;
+
+                if(filePath == null){
+                    if(isDebug){
+                        System.out.println("file path is null, skipping ");
+                    }
+                    return ;
+                }
+
+                if(vv.isAttachedToWindow()){
+                    if(isDebug) {
+                        System.out.println("VideoView Attached to the Window");
+                    }
+                }else{
+                    if(isDebug) {
+                        System.out.println("VideoView Not yet Attached");
+                    }
+                    handlerDownloadImages.postDelayed(this,DELAY_UI_ATTACH);
+                    return ;
+                }
+
+                final String finalFilePath = filePath;
+
+                vv.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mp) {
+                        mp.setLooping(true);
+                        vv.start();
+                    }
+                });
+                vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        vv.resume();
+                    }
+                });
+
+                //if(audioManager == null) {
+                //    audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+                //}
+                //audioManager.abandonAudioFocus();
+
+
+
+                if(vv.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //iv.setVisibility(View.GONE);
+                        if(isDebug) {
+                            System.out.println("setting VideoPath to VideoView: "+finalFilePath);
+                        }
+                        vv.setLayoutParams(new LinearLayout.LayoutParams(popupAreaWidth,popupAreaWidth/2));
+                        vv.setVideoPath(finalFilePath);
+                        vv.setVisibility(View.VISIBLE);
+                        vv.start();
+
+                        //tryout abandoning audiofocus..
+                        //AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+                        //System.out.println("abandonAudioFocus: "+audioManager.abandonAudioFocus(null));
+                    }})){
+
+                    if(isDebug) {
+                        System.out.println("post Succeded");
+                    }
+                }else{
+                    if(isDebug) {
+                        System.out.println("post Failed");
+                    }
+                }
             }
+        });
+    }
 
-            handlerDownloadImages.post(new Runnable() {
-                @Override
-                public void run() {
-                    //boolean cacheHit = false;
-                    //check cache if there is a file there.
-                    String filePath = getApplicationContext().getExternalCacheDir()+url.substring(url.lastIndexOf("/"));
-                    if( ! new File(filePath).canRead()){
-                        if(isDebug) {
-                            System.out.println("File " + filePath + " is not readable. downloading");
-                        }
-                        filePath = downloadFileFromUrl(url);
+    private void checkCacheAndSetVideo(final VideoView vv, final String url){
+        if(vv == null){
+            if(isDebug) {
+                System.out.println("VideoView is Null");
+            }
+            return ;
+        }
+
+        handlerDownloadImages.post(new Runnable() {
+            @Override
+            public void run() {
+                //boolean cacheHit = false;
+                //check cache if there is a file there.
+                String filePath = getApplicationContext().getExternalCacheDir()+url.substring(url.lastIndexOf("/"));
+                if( ! new File(filePath).canRead()){
+                    if(isDebug) {
+                        System.out.println("File " + filePath + " is not readable. downloading");
                     }
+                    filePath = downloadFileFromUrl(url);
+                }
 
-                    if(filePath == null){
-                        if(isDebug){
-                            System.out.println("file path is null, skipping ");
-                        }
-                        return ;
+                if(filePath == null){
+                    if(isDebug){
+                        System.out.println("file path is null, skipping ");
                     }
+                    return ;
+                }
 
-                    if(vv.isAttachedToWindow()){
-                        if(isDebug) {
-                            System.out.println("VideoView Attached to the Window");
-                        }
-                    }else{
-                        if(isDebug) {
-                            System.out.println("VideoView Not yet Attached");
-                        }
-                        handlerDownloadImages.postDelayed(this,DELAY_UI_ATTACH);
-                        return ;
+                if(vv.isAttachedToWindow()){
+                    if(isDebug) {
+                        System.out.println("VideoView Attached to the Window");
                     }
+                }else{
+                    if(isDebug) {
+                        System.out.println("VideoView Not yet Attached");
+                    }
+                    handlerDownloadImages.postDelayed(this,DELAY_UI_ATTACH);
+                    return ;
+                }
 
-                    final String finalFilePath = filePath;
+                final String finalFilePath = filePath;
 
-                    vv.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                        @Override
-                        public void onPrepared(MediaPlayer mp) {
-                            mp.setLooping(true);
-                            vv.start();
-                        }
-                    });
-                    vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            vv.resume();
-                        }
-                    });
+                vv.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mp) {
+                        mp.setLooping(true);
+                        vv.start();
+                    }
+                });
+                vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        vv.resume();
+                    }
+                });
 
-                    //if(audioManager == null) {
-                    //    audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-                    //}
-                    //audioManager.abandonAudioFocus();
+                //if(audioManager == null) {
+                //    audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+                //}
+                //audioManager.abandonAudioFocus();
 
 
-                    if(vv.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            //iv.setVisibility(View.GONE);
-                            if(isDebug) {
-                                System.out.println("setting VideoPath to VideoView: "+finalFilePath);
-                            }
-                            vv.setLayoutParams(new LinearLayout.LayoutParams(popupAreaWidth,popupAreaWidth/2));
-                            vv.setVideoPath(finalFilePath);
-                            vv.setVisibility(View.VISIBLE);
-                            vv.start();
-
-                        }})){
-
+                if(vv.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //iv.setVisibility(View.GONE);
                         if(isDebug) {
-                            System.out.println("post Succeded");
+                            System.out.println("setting VideoPath to VideoView: "+finalFilePath);
                         }
-                    }else{
-                        if(isDebug) {
-                            System.out.println("post Failed");
-                        }
+                        vv.setLayoutParams(new LinearLayout.LayoutParams(popupAreaWidth,popupAreaWidth/2));
+                        vv.setVideoPath(finalFilePath);
+                        vv.setVisibility(View.VISIBLE);
+                        vv.start();
+
+                    }})){
+
+                    if(isDebug) {
+                        System.out.println("post Succeded");
+                    }
+                }else{
+                    if(isDebug) {
+                        System.out.println("post Failed");
                     }
                 }
-            });
-        }
-    */
+            }
+        });
+    }
+*/
     private void checkCacheAndSetVideo(final SurfaceView sv, final String url, final long id){
         if(sv == null){
             if(isDebug) {
@@ -910,11 +910,11 @@ public class TwitStreamViewService extends Service {
                                     svLayoutParams.height = svLayoutParams.width * mp.getVideoHeight() / mp.getVideoWidth();
                                 }
                                 sv.post(new Runnable(){
-                                    @Override
-                                    public void run() {
-                                        sv.setLayoutParams(svLayoutParams);
-                                    }
-                                });
+                                        @Override
+                                        public void run() {
+                                            sv.setLayoutParams(svLayoutParams);
+                                        }
+                                    });
 
                                 mp.setLooping(true);
                                 mp.start();
